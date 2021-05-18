@@ -11,9 +11,9 @@ spring:
 
 zuul:
   routes:
-    say-hello:
+    service-hello-world:
       path: /say/hello/**
       serviceId: service-hello-world
-    greeting:
+    gretting-service:
       path: /greeting/**
       serviceId: greeting-service
