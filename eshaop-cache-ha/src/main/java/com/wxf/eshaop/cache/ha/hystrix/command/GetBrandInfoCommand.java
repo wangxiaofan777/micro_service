@@ -18,7 +18,13 @@ public class GetBrandInfoCommand extends HystrixCommand<String> {
                 .andThreadPoolKey(HystrixThreadPoolKey.Factory.asKey("GetBrandInfoPool"))
                 .andThreadPoolPropertiesDefaults(HystrixThreadPoolProperties.Setter()
                         .withCoreSize(15)
-                        .withQueueSizeRejectionThreshold(10)));
+                        .withQueueSizeRejectionThreshold(10))
+                .andCommandPropertiesDefaults(HystrixCommandProperties.Setter()
+                        .withCircuitBreakerEnabled(true)
+                        .withCircuitBreakerRequestVolumeThreshold(10) // 段机器统计阈值
+                        .withCircuitBreakerErrorThresholdPercentage(40) // 统计比例
+                        .withCircuitBreakerSleepWindowInMilliseconds(10000) // 半开状态恢复时间
+                ));
         this.brandId = brandId;
     }
 
