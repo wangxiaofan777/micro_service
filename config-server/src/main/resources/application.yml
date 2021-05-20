@@ -1,0 +1,15 @@
+spring:
+  application:
+    name: config-server
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://github.com/roncoo-eshop/roncoo-eshop-config
+          search-paths: config-file
+          default-label: master
+          username: roncoo-eshop
+          password: roncoo123456
+
+server:
+  port: 8767
